@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) Banco Central do Brasil.
+  ~
+  ~ Este software é confidencial e propriedade do Banco Central do Brasil.
+  ~ Não é permitida sua distribuição ou divulgação do seu conteúdo sem
+  ~ expressa autorização do Banco Central.
+  ~ Este arquivo contém informações proprietárias.
+  -->
+<configuration>
+
+    <appender name="application-logging" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %boldMagenta([A]) [%thread] %highlight([%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{360}] -> %msg%n)
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="dependency-logging" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [D] [%thread] %highlight([%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{360}] -> %msg %n)
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="root-logging" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [R] [%thread] %highlight([%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{360}] -> %msg %n)
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log priority: [ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL <	OFF] -->
+
+    <!-- Logs generic in the application -->
+    <logger name="com.github.thiagogarbazza.playlistcopy" level="ALL" additivity="false">
+        <appender-ref ref="application-logging" />
+    </logger>
+
+    <!-- All logs in the application -->
+    <root level="WARN">
+        <appender-ref ref="root-logging" />
+    </root>
+</configuration>
