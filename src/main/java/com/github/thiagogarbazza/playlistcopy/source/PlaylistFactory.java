@@ -37,8 +37,7 @@ public class PlaylistFactory {
                 }
             }
         } catch (IOException e) {
-            log.error("Erro ao acessar ao tentar recuperar a linha " + audioNumber + " do arquivo " + playlistM3U.getName(),
-                    e);
+            log.error("Error trying to extract audios from M3U file.", e);
         } finally {
             IOUtils.closeQuietly(scanner);
             IOUtils.closeQuietly(in);

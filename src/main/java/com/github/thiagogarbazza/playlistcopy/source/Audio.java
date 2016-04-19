@@ -47,6 +47,6 @@ public class Audio implements Comparable<Audio>, Serializable {
 
     @Override
     public String toString() {
-        return  MessageFormat.format("{0}. {1}", number, file.getName());
+        return MessageFormat.format("{0}. {1}", number, file.getName());
     }
 }

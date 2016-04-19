@@ -36,7 +36,7 @@ public class Playlist extends TreeSet<Audio> {
                     File copy = new File(destiny, fileName);
                     FileUtils.copyFile(audio.getFile(), copy);
                 } catch (IOException e) {
-                    log.error("Erro ao copiar arquivo", e);
+                    log.error("Error copying file", e);
                 }
             }
         });
