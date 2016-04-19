@@ -12,7 +12,7 @@ import org.apache.commons.io.FileUtils;
 import lombok.extern.apachecommons.CommonsLog;
 
 @CommonsLog
-public class Playlist extends TreeSet<Audio> {
+class Playlist extends TreeSet<Audio> {
 
     protected Playlist() {
 

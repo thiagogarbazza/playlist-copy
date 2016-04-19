@@ -6,14 +6,13 @@ import java.text.MessageFormat;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
-
-public class Audio implements Comparable<Audio>, Serializable {
+@EqualsAndHashCode
+class Audio implements Comparable<Audio>, Serializable {
 
     private String number;
     private File file;
@@ -29,20 +28,6 @@ public class Audio implements Comparable<Audio>, Serializable {
             return 1;
         }
         return new CompareToBuilder().append(this.number, o.number).toComparison();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(this.number).toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object instanceof Audio) {
-            Audio audio = (Audio) object;
-            return new EqualsBuilder().append(this.number, audio.number).isEquals();
-        }
-        return false;
     }
 
     @Override

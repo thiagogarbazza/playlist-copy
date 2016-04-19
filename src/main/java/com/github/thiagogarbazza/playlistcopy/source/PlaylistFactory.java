@@ -13,11 +13,13 @@ import org.apache.commons.lang3.StringUtils;
 import lombok.extern.apachecommons.CommonsLog;
 
 @CommonsLog
-public class PlaylistFactory {
+class PlaylistFactory {
+
+    AudioFactory audioFactory;
 
     private static final Charset CHARSET = Charset.forName("ISO-8859-1");
 
-    public static Playlist factory(final File playlistM3U) {
+    public Playlist factory(final File playlistM3U) {
         Playlist playlist = new Playlist();
 
         InputStream in = null;
@@ -30,7 +32,7 @@ public class PlaylistFactory {
             scanner.useDelimiter(System.getProperty("line.separator"));
             while (scanner.hasNext()) {
                 String linha = StringUtils.trimToEmpty(scanner.next());
-                Audio audio = createAudio(audioNumber, linha);
+                Audio audio = audioFactory.factory(audioNumber, linha);
                 if (audio != null) {
                     playlist.add(audio);
                     audioNumber++;
@@ -46,14 +48,5 @@ public class PlaylistFactory {
         return playlist;
     }
 
-    protected static Audio createAudio(Integer number, String line) {
-        final boolean containsFileType = StringUtils.contains(line, "#EXTM3U");
-        final boolean containsItenInfo = StringUtils.contains(line, "#EXTINF");
-        final boolean isEmpty = StringUtils.isEmpty(line);
 
-        if (!isEmpty && !containsFileType && !containsItenInfo) {
-            return new Audio(number, new File(line));
-        }
-        return null;
-    }
 }
