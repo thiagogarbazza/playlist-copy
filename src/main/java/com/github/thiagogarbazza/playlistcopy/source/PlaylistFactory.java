@@ -41,7 +41,9 @@ class PlaylistFactory {
         } catch (IOException e) {
             log.error("Error trying to extract audios from M3U file.", e);
         } finally {
-            IOUtils.closeQuietly(scanner);
+            if(scanner != null){
+                scanner.close();
+            }
             IOUtils.closeQuietly(in);
         }
 

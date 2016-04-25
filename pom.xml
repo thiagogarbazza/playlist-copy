@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <dependency.commons-io.version>2.4</dependency.commons-io.version>
+        <dependency.commons-io.version>2.5</dependency.commons-io.version>
         <dependency.commons-lang3.version>3.4</dependency.commons-lang3.version>
         <dependency.commons-collections4.version>4.1</dependency.commons-collections4.version>
         <dependency.commons-logging.version>1.2</dependency.commons-logging.version>
